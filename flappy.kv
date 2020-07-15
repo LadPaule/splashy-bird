@@ -1,0 +1,38 @@
+#:include pipe.kv
+
+FloatLayout:
+    Background:
+        id: background
+        canvas.before:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'sky.png'
+            Rectangle:
+                size: self.width, 95
+                pos: self.pos[0], self.pos[1] + self.height - 95
+                texture: self.cloud_texture
+            Rectangle:
+                size: self.width, 119
+                pos: self.pos[0], self.pos[1]
+                texture: self.ground_texture
+    Label:
+        id: score
+        size_hint_y: None
+        height: 90
+        text: "0"
+        font_size: 40
+    Button:
+        text: "Start game"
+        size_hint: None, None
+        pos: 0, 0
+        size: 80, 50
+        on_release:
+            app.start_game()
+    Bird:
+        source: "bird1.png"
+        size_hint: None, None
+        size: 124, 67
+        pos: 20, (root.height - 119) / 2.0
+        id: bird
+                   
